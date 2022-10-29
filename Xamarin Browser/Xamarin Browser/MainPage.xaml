@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Xamarin_Browser"
+             x:Class="Xamarin_Browser.MainPage">
+
+    <StackLayout Spacing="0">
+        <Frame BackgroundColor="#2196F3" Padding="0" CornerRadius="0">
+            <StackLayout Orientation="Horizontal" Spacing="0">
+                <Label Text="{Binding Source={x:Reference webView}, Path=PageTitle}" TextColor="White" FontSize="24" Padding="8" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
+                <Button x:Name="back" Text="&lt;" Clicked="OnBackButtonClicked" IsEnabled="{Binding Source={x:Reference webView}, Path=CanGoBack}" HorizontalOptions="EndAndExpand" BackgroundColor="#2196F3" TextColor="White" FontSize="32" WidthRequest="60" />
+                <Button x:Name="forward" Text="&gt;" Clicked="OnForwardClicked" IsEnabled="{Binding Source={x:Reference webView}, Path=CanGoForward}" HorizontalOptions="End" BackgroundColor="#2196F3" TextColor="White" FontSize="32" WidthRequest="60" />
+            </StackLayout>
+        </Frame>
+
+        <RefreshView x:Name="refreshView">
+            <local:WebViewWithTitle x:Name="webView"
+                                    Source="http://192.168.1.4/antiscam/"
+                                    Navigated="OnWebViewNavigated"
+                                    ClassId="webView" />
+        </RefreshView>
+    </StackLayout>
+
+</ContentPage>
