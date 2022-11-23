@@ -11,11 +11,13 @@ namespace Xamarin_Browser
         CancellationTokenSource reloadTimeoutCancel;
 
         public static WebView mainWebView;
+        public const string webPageUrl = "https://if.ddns.net";
 
         public MainPage()
         {
             InitializeComponent();
             mainWebView = webView;
+            webView.Source = webPageUrl;
 
             ICommand refreshCommand = new Command(() =>
             {
